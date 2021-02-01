@@ -16,14 +16,11 @@ This module is in charge of:
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const crypto = require("crypto");
-const sharp = require("sharp");
-const fs = require("fs");
 const TaskService = require("../services/tasks.service");
 
 const taskService = new TaskService();
 const rootDir = process.cwd();
-const outputDir = `${rootDir}/output`;
+//const outputDir = `${rootDir}/output`;
 const inputDir = `${rootDir}/input`;
 const inputFileName = "file-";
 let ext = "";
@@ -62,6 +59,7 @@ router.get("/task/:id/:size", async (req, res) => {
       break;
     case "original":
       res.status(200).sendFile(taskFromDB.outputOriginalPath);
+      break;
     default:
       res.status(400).send("Bad Request");
   }
@@ -70,14 +68,21 @@ router.get("/task/:id/:size", async (req, res) => {
 /* GET task/:id return the processing state for an image */
 router.get("/task/:id", async (req, res) => {
   const taskId = req.params.id;
-  const taskFromDB = await taskService.getTask(taskId);
-
-  res.status(200).send({
-    taskId: taskFromDB._id,
-    timestamp: taskFromDB.timestamp,
-    status: taskFromDB.status,
-    originalName: taskFromDB.originalname,
-  });
+  try {
+    const taskFromDB = await taskService.getTask(taskId);
+    if (taskFromDB === null) {
+      res.status(404).send({ message: "Task not found" });
+    } else {
+      res.status(200).send({
+        taskId: taskFromDB._id,
+        timestamp: taskFromDB.timestamp,
+        status: taskFromDB.status,
+        originalName: taskFromDB.originalname,
+      });
+    }
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 /*POST task creates a request to process an image*/
@@ -87,18 +92,22 @@ router.post("/task", upload.single("file"), async (req, res, next) => {
     res.status(400).send({ message: "An image is required" });
   }
 
-  //Updating DB
-  const taskCreated = await taskService.createTask();
-  taskCreated.originalname = req.file.originalname;
-  taskCreated.inputPath = req.file.path;
-  await taskCreated.save();
+  try {
+    //Updating DB
+    const taskCreated = await taskService.createTask();
+    taskCreated.originalname = req.file.originalname;
+    taskCreated.inputPath = req.file.path;
+    await taskCreated.save();
 
-  res.status(200).send({
-    taskId: taskCreated._id,
-    timestamp: taskCreated.timestamp,
-    status: taskCreated.status,
-    originalName: taskCreated.originalname,
-  });
+    res.status(200).send({
+      taskId: taskCreated._id,
+      timestamp: taskCreated.timestamp,
+      status: taskCreated.status,
+      originalName: taskCreated.originalname,
+    });
+  } catch (error) {
+    res.status(404).send("fail to create task");
+  }
 });
 
 module.exports = router;
