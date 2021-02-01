@@ -26,17 +26,9 @@ Use postman to use this api:
 
 1- POST http://localhost:3000/task   body: file:file
 
-Example: 
-
-
 2- GET http://localhost:3000/task/:id 
 
-Example:
-
 3- GET http://localhost:3000/task/:id/original
-
-Example: 
-
 
 ## Construido con 🛠️
 
