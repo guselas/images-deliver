@@ -12,7 +12,9 @@ You need access to a Mongo database (see: https://docs.mongodb.com/manual/instal
 To start this project, do the following:
 
 1- in a terminal do: git clone https://github.com/guselas/images-deliver.git
+
 2- type: cd ImagesDeliver
+
 3- type: npm install
 
 
@@ -30,9 +32,7 @@ Use postman to use this api:
 
 3- GET http://localhost:3000/task/:id/original
 
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+## Build with 🛠️
 
 * Node.js - cross-platform runtime environment
 * Express - Node framework designed for building web applications and APIs
