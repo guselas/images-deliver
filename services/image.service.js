@@ -1,7 +1,8 @@
-// this modules is in charge of:
-// has a loop for each 10 secs, ask if there are new tasks pending
-// if there are tasks pending this module will process tasks
 /*
+this modules is in charge of:
+has a loop for each 10 secs, ask if there are new tasks pending
+if there are tasks pending this module will process tasks
+
 Task interface{
     taskId: ObjectId,
     timestamp: Date,
