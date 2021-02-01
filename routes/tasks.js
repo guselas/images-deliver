@@ -6,7 +6,6 @@ const TaskService = require("../services/tasks.service");
 
 const taskService = new TaskService();
 const rootDir = process.cwd();
-//const outputDir = `${rootDir}/output`;
 const inputDir = `${rootDir}/input`;
 const inputFileName = "file-";
 let ext = "";
