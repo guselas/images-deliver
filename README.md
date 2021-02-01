@@ -45,4 +45,4 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 ## Author ✒️
 
-* Fernando Ruiz [fulanitodetal](https://github.com/guselas)
+* Fernando Ruiz  Git: (https://github.com/guselas)
