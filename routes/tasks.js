@@ -1,18 +1,4 @@
-/*
-This module is in charge of:
 
-  POST /task @form-data: file =>{
-    if mimetype is image then   
-    after multer saves the uploadFile in inputFolder we create a new task 
-      newTask => create a task register in DB + update 
-      inputPath = multer input fileName
-      timestamp = Date.now()
-      status = 'pending'
-
-      return taskId
-  }
-
-*/
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
