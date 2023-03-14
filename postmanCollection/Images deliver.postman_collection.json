@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "b354457d-61ec-4d99-a8b0-741df6d1023e",
+		"name": "Images deliver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11456048"
+	},
+	"item": [
+		{
+			"name": "Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "file",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/frr/Documents/FerPersonal/images-deliver/Inditex-Logo.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/task/64107e13be57a05748a1c29a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task",
+						"64107e13be57a05748a1c29a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task for 1024px",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/task/64107e13be57a05748a1c29a/1024",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task",
+						"64107e13be57a05748a1c29a",
+						"1024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task for 800px",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/task/file-1678796538205/800",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task",
+						"file-1678796538205",
+						"800"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
