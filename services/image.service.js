@@ -1,34 +1,3 @@
-// this modules is in charge of:
-// has a loop for each 10 secs, ask if there are new tasks pending
-// if there are tasks pending this module will process tasks
-/*
-Task interface{
-    taskId: ObjectId,
-    timestamp: Date,
-    status: string // pending / in-process / done
-    inputPath: string, //generted by multer on POST /task
-    outputOriginalPath: string //output/originalFileName/original/md5.ext
-    output800Path: string //output/originalFileName/800/md5.ext
-    output1024Path: string //output/originalFileName/1024/md5.ext
-}
-*/
-/* processImage = async (taskId)=> {
-    getTaskFromDB = await ....
-    getTaskFromDB.status = 'in-process';
-    update getTaskFromDB;
-    we move getTaskFromDB.inputPath to outputOriginalPath
-    we sharp().resize(800) to output800Path,
-    we sharp().resize(1024) to output1024Path,
-    we sharp() to outputOriginalPath,
-    we update TaskFromDB;
-}
-
-
-Main loop:
-    every 5 secs get Pending tasks
-    foreach pendingTask do processImage(pendingTaskId)
-*/
-
 const crypto = require("crypto");
 const sharp = require("sharp");
 const fs = require("fs");
